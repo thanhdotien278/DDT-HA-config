@@ -1,0 +1,200 @@
+- platform: broadlink   ### Broadlink A1###
+  host: 192.168.2.7
+  mac: '34:EA:34:F6:57:BA'
+    #update_interval: 30
+  name: ''
+  monitored_conditions:
+    - 'temperature'
+    - 'humidity'
+    - 'air_quality'
+    - 'light'
+    - 'noise'
+- platform: darksky
+  api_key: !secret weather    
+  latitude: !secret latitude_home 
+  longitude: !secret longitude_home
+  #language: en
+  forecast:
+    - 1
+    - 2
+    - 3
+    - 4
+    - 5
+    - 6
+    - 7
+  monitored_conditions:
+    - icon
+    - summary
+    - nearest_storm_distance
+    - nearest_storm_bearing
+    - humidity
+    - temperature
+    - temperature_high
+    - temperature_low
+    - apparent_temperature
+    - apparent_temperature_high
+    - apparent_temperature_low
+    - wind_speed
+    - wind_bearing
+    - precip_type
+    - precip_probability
+    - precip_accumulation
+    - precip_intensity
+    - precip_intensity_max
+    - uv_index
+    - daily_summary
+    - pressure
+    - visibility
+  update_interval:
+    minutes: 5  
+
+- platform: amcrest
+  monitored_conditions:
+    - motion_detector
+    
+
+
+
+
+- platform: systemmonitor
+  resources:
+    - type: disk_use_percent
+    - type: disk_free
+      arg: /
+    - type: memory_use_percent
+    - type: memory_free
+    - type: swap_use_percent
+    - type: processor_use
+    - type: memory_use
+    - type: network_in
+      arg: wlan0
+    - type: network_out    
+      arg: wlan0  
+    - type: last_boot 
+    - type: since_last_boot
+
+- platform: speedtest
+  minute: 30
+  hour:
+    - 0
+    - 6
+    - 9
+    - 12
+    - 15
+    - 18
+    - 21
+  monitored_conditions:
+    - download
+
+- platform: time_date
+  display_options:
+    - 'time'
+    - 'date'   
+
+
+- platform: template
+  sensors:
+    mattroi:
+      friendly_name: "Mặt trời"
+      value_template: >-
+        {% if is_state('sun.sun','above_horizon') %}
+          Ban ngày
+        {% else %}
+          Trời tối
+        {% endif %}
+
+
+
+        
+- platform: template
+  sensors:
+    weathertoday:
+      friendly_name: "Thời tiết hôm nay" 
+      value_template: >-
+        {% if is_state('sensor.dark_sky_icon', 'partly-cloudy-day') %}
+          Ngày trời ít mây
+        {% elif is_state('sensor.dark_sky_icon', 'clear-day') %}
+          Ngày trời trong xanh
+        {% elif is_state('sensor.dark_sky_icon', 'clear-night') %}
+          Đêm trời đẹp
+        {% elif is_state('sensor.dark_sky_icon', 'rain') %}
+          Trời mưa
+        {% elif is_state('sensor.dark_sky_icon', 'wind') %}
+          Gió nhiều
+        {% elif is_state('sensor.dark_sky_icon', 'cloudy') %}
+          Trời nhiều mây
+        {% elif is_state('sensor.dark_sky_icon', 'partly-cloudy-night') %}
+          Đêm trời ít mây
+        {% elif is_state('sensor.dark_sky_icon', 'fog') %}
+          Sương mù
+        {% elif is_state('sensor.dark_sky_nearest_storm_distance', 'unknown') %}
+          Không có cơn bão nào
+        {% else %}
+          ...
+        {% endif %}
+
+- platform: template
+  sensors:
+    chatluongkhongkhi:
+      friendly_name: "Chất lượng không khí" 
+      value_template: >-
+        {% if is_state('sensor._air_quality', '0') %}
+          Không khí trong sạch
+        {% elif is_state('sensor._air_quality', '1') %}
+          Không khí không được sạch
+        {% elif is_state('sensor._air_quality', '2') %}
+          Không khí có hại cho sức khỏe
+        {% endif %}
+
+        
+
+- platform: template
+  sensors:
+    cuongdoanhsang:
+      friendly_name: "Cường độ ánh sáng"         
+      value_template: >-
+        {% if is_state('sensor._light', '0') %}
+          Tối
+        {% elif is_state('sensor._light', '1') %}
+          Sáng nhẹ
+        {% elif is_state('sensor._light', '2') %}
+          Đầy đủ ánh sáng
+        {% endif %}
+
+- platform: template
+  sensors:
+    tiengon:
+      friendly_name: "Tiếng ồn" 
+      value_template: >-
+        {% if is_state('sensor._noise', '0') %}
+          Yên tĩnh
+        {% elif is_state('sensor._noise', '1') %}
+          Ồn nhẹ
+        {% elif is_state('sensor._noise', '2') %}
+          Quá ồn gây ảnh hưởng sức khỏe
+        {% endif %}
+
+- platform: mqtt
+  state_topic: "owntracks/mosq/MIMI"
+  name: "Battery Tablet"
+  unit_of_measurement: "%"
+  value_template: '{{ value_json.batt }}'
+  device_class: battery
+        
+- platform: template
+  sensors:
+    battery_myphone:
+      unit_of_measurement: '%'
+      value_template: >
+        {%- if states.device_tracker.MIMI.attributes.battery %}
+        {{ states.device_tracker.MIMI.attributes.battery|round }}
+        {% else %}
+        {{ states.sensor.battery_myphone.state }}
+        {%- endif %}
+      icon_template: 
+        '{%- if is_state("sensor.battery_myphone", "unknown") %}mdi:battery-unknown
+        {%- elif is_state_attr("device_tracker.MIMI", "battery_status", "Charging") %}mdi:battery-charging
+        {%- elif states.device_tracker.MIMI.attributes.battery <= 5 %}mdi:battery-outline
+        {%- elif states.device_tracker.MIMI.attributes.battery >= 95 %}mdi:battery
+        {% else %}mdi:battery-{{(states.device_tracker.MIMI.attributes.battery|float / 10)|round*10}}
+        {%- endif %}'

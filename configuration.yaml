@@ -1,0 +1,171 @@
+###################################################
+#                                                 #
+#     Home Assistant Main Configuration File      #
+#                                                 #
+###################################################
+
+homeassistant:
+  name: Tiến Thành's Home
+  latitude: !secret latitude_home
+  longitude: !secret longitude_home
+  temperature_unit: C
+  elevation: 0
+  unit_system: metric
+  # Pick yours from here: http://en.wikipedia.org/wiki/List_of_tz_database_time_zones
+  time_zone: Asia/Ho_Chi_Minh
+  customize: !include includes/customize.yaml
+
+  whitelist_external_dirs:
+    - /tmp
+
+panel_iframe:  #MDI Icons Index
+  mdiindex:
+    title: MDI Icons Index
+    icon: mdi:vector-square
+    url: https://cdn.rawgit.com/james-fry/home-assistant-mdi/efd95d7a/home-assistant-mdi.html
+
+
+python_script:
+
+# Enables the frontend
+frontend:
+
+# Enables configuration UI
+config:
+
+weather:
+  - platform: yweather
+    woeid: !secret woeid_wether
+
+# Uncomment this if you are using SSL/TLS, running in Docker container, etc.
+http:
+  ssl_certificate: !secret ssl_certificate
+  ssl_key: !secret ssl_key
+  base_url: !secret base_url
+  server_port: !secret server_port
+  api_password: !secret api_passwd
+  login_attempts_threshold: 3
+
+google_assistant:
+  project_id: !secret google_project_id
+  api_key: !secret google_project_api_key
+  exposed_domains:
+    - switch
+    - light
+
+updater:
+  include_used_components: true
+
+discovery:
+
+conversation:
+
+
+
+history:
+
+zone:
+  - name: Work
+    latitude: !secret latitude_work
+    longitude: !secret longitude_work
+    radius: 250
+    icon: mdi:school
+
+  - name: Wife's Company
+    latitude: !secret latitude_work_w
+    longitude: !secret longitude_work_w
+    icon: mdi:bank
+
+  # This will override the default home zone
+  - name: Home
+
+
+    latitude: !secret latitude_home
+    longitude: !secret longitude_home
+    radius: 100
+    icon: mdi:account-multiple
+
+
+logbook:
+
+####################################################
+#                                                  #
+#                      MQTT                        #
+#                                                  #
+####################################################
+mqtt:
+  broker: 192.168.2.2
+  #keepalive: 60
+  port: 1883
+  username: mosq
+  password: !secret mosq_passwd
+  protocol: 3.1.1
+
+
+
+device_tracker:
+  - platform: owntracks
+    max_gps_accuracy: 200
+    waypoints: true
+    mqtt_topic: "owntracks/mosq/MIMI"
+    events_only: true
+
+map:
+
+
+amcrest:
+  - host: !secret amcrest_ip
+    username: !secret amcrest_user
+    password: !secret amcrest_pass
+    resolution: low
+    sensors:
+      - motion_detector
+      - sdcard
+    switches:
+      - motion_detection
+      - motion_recording
+
+ffmpeg:
+  ffmpeg_bin: /usr/bin/ffmpeg
+
+camera:
+  - platform: ffmpeg
+    input: rtsp://192.168.2.10/onvif1
+    name: Yosee Camra
+  - platform: amcrest
+    input: http://admin:admin@192.168.2.30/cgi-bin/snapshot.cgi?1
+    name: Amcrest Super
+
+
+sun:
+
+tts:
+  - platform: google
+    cache_dir: /tmp/tts
+    time_memory: 300
+    language: 'vi'
+    cache: true
+
+
+
+ifttt:
+  key: !secret ifttt_key
+
+ring:
+  username: !secret ring_user
+  password: !secret ring_pwd
+
+####################################################
+#                                                  #
+#                    Includes                      #
+#                                                  #
+####################################################
+switch: !include includes/switches.yaml
+cloud:
+group: !include includes/groups.yaml
+automation: !include includes/automations.yaml
+input_select: !include includes/input_select.yaml
+sensor: !include includes/sensors.yaml
+binary_sensor: !include includes/binary_sensor.yaml
+script: !include includes/scripts.yaml
+recorder: !include includes/recorder.yaml

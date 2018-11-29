@@ -1,0 +1,5 @@
+media_player.google_home:
+  icon: mdi:google-home
+media_player.home_mini: {}
+media_player.chromecast3089:
+  icon: mdi:cast

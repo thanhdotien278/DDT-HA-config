@@ -1,0 +1,71 @@
+#################################################################
+## Switches
+#################################################################
+
+  - platform: broadlink
+    host: 192.168.2.11
+    mac: '34:EA:34:42:F3:DD'
+    type: rm2_pro_plus
+    timeout: 15
+    switches:
+      fan_kangaroo:
+        friendly_name: 'Quạt Kangaroo'
+        command_on: 'JgCEAw0qKg4pDw0rDSoOKg0rDSoqDg4AAQ0qDikPDSsoECgPDioNKw0qDioOKikPDQABDikPKBAMKykPKQ8NKwwrDSsNKwwrKg4NAAEOKQ8pDw0rKBAoDw0rDSsMKw0rDSsoEAwAAQ8oECgPDSsoECgPDSsNKwwrDSsNKygPDQABDikPKQ8NKygPKQ8NKwwrDSsNKwwrKQ8NAAEOKQ8oEAwrKQ8oEAwrDSsMKw0rDSsoDw0AAQ8oDykPDSsoDykPDSsMKw0rDCwNKikPDAABDygQKA8NKygQKA8NKw0rDSoOKg0qKQ8NAAEOKQ8pDwwrKQ8pDwwrDSsNKwwrDSsoEAwAAQ8oECgPDSsoECgQDCsNKwwrDSsNKygPDQABDygPKQ8NKygPKQ8NKwwrDSsNKwwrKQ8NAAEOKQ8oEAwrKQ8oEAwrDSsMLAwrDSsoEAwAAQ8oECgQDCsoECgQDCsMKw0rDCwMKygRCwABDygRJxAMKygQKBAMKwwsDCsNKwwrKRAMAAEOKRAnEAwrKRAnEAwrDSsMKw0rDCwoEAwAAQ4pECcRCyspECcRCysNKwwsDCsNKygQDAABDygQKBAMKygQKBALLAwsDCwLLAwsJxELAAEPKBAoEAwsJxAoEAwsCywMLAssDCwoEAsAARAnEScQDCwnEScQDCwLLAwsDCwLLCgQDAABDygQJxAMLCgQJxAMLAwsCywMLAssKBAMAAEPKBAnEQssKBAnEQssDCwMLAssDCwnEQsAARAnECgQDCwnECgQDCwLLAwsCywMLCcRCwABECcRJxAMLCcRJxAMLAstCywMLAssKBAMAAEPKBAnEQssKBAnEQssDCwLLQssDCwnEQsAARAnEScRCi0nEScRCi0LLAwsCywMLCcSCgABECcRJxELLCcRJxELLAstCywMLAssKBELAAEPKBEmEQstJxEmEQstCy0KLQstCy0mEQsAARAnESYSCi0nESYSCi0LLQstCi0LLSYRCwABESYRJxELLSYRJxELLQotCy0KLQstJhIKAAERJhImEgouJRImEgouCS4KLgotCi4mEgkAARIlEyUSCi4lEyUSCi4KLQouCi4JLiYSCgABEiUTJBMJLyUTJBMJLwkvCC8JLwkuJRMJAAESJRQkFAcwJBQkFAcwCDAILwgxBzAjFQcAARQjFiIWBTIiFyEAAS0hAAE4GgANBQAAAAA='
+        command_off: 'JgCEAynzKA8pDw0rKA8pDw0rDCsNKwwsDCsNKyjzKBAoDw0rKBAoDw0rDSsMKw0rDCsNKynyKQ8oEAwrKQ8oEAwrDSsMLAwrDSsMKynzKA8pDw0rKA8pDw0rDCsNKwwrDSsNKyjzKBAoDw0rKBAoDw0rDSsMKw0rDCsNKynyKQ8oEAwrKQ8oEAwrDSsNKwwrDSsMKynzKA8pDw0rKA8pDw0rDSoOKg0rDSoOKijzKBAoDw4qKBAoDw4qDSsNKg4qDSoOKijzKQ8oEA0qKQ8oEA0qDioNKw0qDioNKinzKA8pDw0rKA8pDw0rDCsNKwwrDSsNKyjzKBAoDw0rKBAoDw0rDCwMKw0rDCsNKyjzKQ8oEAwrKQ8oEAwrDSsMLAwrDSsMKynzKA8pDw0rKA8pDw0rDCsNKw0qDSsNKyjzKBAoDw0rKBAoDw0rDCwMKw0rDCsNKyjzKQ8oEAwrKQ8oEAwrDSsMKw0rDSsMKynzKA8pDwwsKA8pDw0rDCsNKwwrDSsNKyjzKBAoDw0rKBEnEAwrDSsMKw0rDCsNKynyKRAnEQsrKRAnEQsrDSsMLAwrDSsMKynzKBAoEAwrKBAoEAwrDCsNKwwsDCsNKyjzKBEnEAwrKBEnEAwrDSsMKw0rDCwMKynyKRAnEQssKBAoEAssDCwMLAssDCwLLCjzKBAoEAwsJxAoEAwsCywMLAwsCywMLCf0KBAnEQssKBAnEQssDCwLLAwsDCwLLCj0JxAoEAwsJxAoEAwsCywMLAwsCywMLCf0KBAnEAwsKBAnEAwsDCwLLAwsDCwLLCjzKBAoEAssKBAoEAstCywMLAssDCwMLCf0JxEnEAwsJxEnEAwsCywMLAwsCywMLCf0KBAnEQssKBAnEQssDCwLLAwsDCwLLCj0JxEnEQotJxEnEQotCywMLAssDCwMLCf0JxImEQssJxImEQstCi0LLQstCi0LLSb1JxEmEgotJxEmEgotCy0KLQstCy0KLSf1JhEnEQstJhEnEQstCi0LLQouCi0LLSb1JhImEQstJhImEQstCy0KLQstCi4KLib1JhImEgkuJhImEgkuCi4KLgkuCi4KLSb2JRImEgouJRMlEwkvCC8JLwkvCC8JLyT3JRMkEwkvJRMkEwkwCDAHMAgwCC8IMCT3JBUjFQYxIxUjFQcwBzIFMgYyBTMFMiL6IRkfUR8aHQANBQAAAAA='
+
+  - platform: broadlink
+    host: 192.168.2.12
+    mac: '54:60:09:AD:0D:1C'
+    type: rm_mini
+    timeout: 15
+    switches:
+      samsung_tv:
+        friendly_name: 'Tivi Samsung'
+        command_on: 'aaaabafsf='
+        command_off: 'JgCEAynzKA8pDw0rKAKBAoDw0rKBAoDw0rDSsMKw0rDCsNKynyKQ8oEAwrKQ8oEAwrDSsMLAwrDSsMKynzKA8pDw0rKA8pDw0rDCsNKwwrDSsNKyjzKBAoDw0rKBAoDw0rDSsMKw0rDCsNKynyKQ8oEAwrKQ8oEAwrDSsNKwwrDSsMKynzKA8pDw0rKA8pDw0rDSoOKg0rDSoOKijzKBAoDw4qKBAoDw4qDSsNKg4qDSoOKijzKQ8oEA0qKQ8oEA0qDioNKw0qDioNKinzKA8pDw0rKA8pDw0rDCsNKwwrDSsNKyjzKBAoDw0rKBAoDw0rDCwMKw0rDCsNKyjzKQ8oEAwrKQ8oEAwrDSsMLAwrDSsMKynzKA8pDw0rKA8pDw0rDCsNKw0qDSsNKyjzKBAoDw0rKBAoDw0rDCwMKw0rDCsNKyjzKQ8oEAwrKQ8oEAwrDSsMKw0rDSsMKynzKA8pDwwsKA8pDw0rDCsNKwwrDSsNKyjzKBAoDw0rKBEnEAwrDSsMKw0rDCsNKynyKRAnEQsrKRAnEQsrDSsMLAwrDSsMKynzKBAoEAwrKBAoEAwrDCsNKwwsDCsNKyjzKBEnEAwrKBEnEAwrDSsMKw0rDCwMKynyKRAnEQssKBAoEAssDCwMLAssDCwLLCjzKBAoEAwsJxAoEAwsCywMLAwsCywMLCf0KBAnEQssKBAnEQssDCwLLAwsDCwLLCj0JxAoEAwsJxAoEAwsCywMLAwsCywMLCf0KBAnEAwsKBAnEAwsDCwLLAwsDCwLLCjzKBAoEAssKBAoEAstCywMLAssDCwMLCf0JxEnEAwsJxEnEAwsCywMLAwsCywMLCf0KBAnEQssKBAnEQssDCwLLAwsDCwLLCj0JxEnEQotJxEnEQotCywMLAssDCwMLCf0JxImEQssJxImEQstCi0LLQstCi0LLSb1JxEmEgotJxEmEgotCy0KLQstCy0KLSf1JhEnEQstJhEnEQstCi0LLQouCi0LLSb1JhImEQstJhImEQstCy0KLQstCi4KLib1JhImEgkuJhImEgkuCi4KLgkuCi4KLSb2JRImEgouJRMlEwkvCC8JLwkvCC8JLyT3JRMkEwkvJRMkEwkwCDAHMAgwCC8IMCT3JBUjFQYxIxUjFQcwBzIFMgYyBTMFMiL6IRkfUR8aHQANBQAAAAA='
+
+
+
+  - platform: mqtt
+    name: Bedroom light
+    state_topic: "stat/2nut_so1/POWER1"
+    command_topic: "cmnd/2nut_so1/POWER1"
+    payload_on: "ON"
+    payload_off: "OFF"
+    payload_available: "Online"
+    payload_not_available: "Offline"
+    qos: 1
+    retain: false
+
+  - platform: mqtt
+    name: Balcony Light
+    state_topic: "stat/2nut_so1/POWER2"
+    command_topic: "cmnd/2nut_so1/POWER2"
+    payload_on: "ON"
+    payload_off: "OFF"
+    payload_available: "Online"
+    payload_not_available: "Offline"
+    qos: 1
+    retain: false
+
+  - platform: mqtt
+    name: Toilet 2
+    state_topic: "stat/sonoff/t2/toilet/POWER"
+    command_topic: "cmnd/sonoff/t2/toilet/POWER"
+    payload_on: "ON"
+    payload_off: "OFF"
+    payload_available: "Online"
+    payload_not_available: "Offline"
+    qos: 1
+    retain: false
+
+  - platform: mqtt
+    name: Heater 3
+    state_topic: "stat/sonoff/heater3/POWER"
+    command_topic: "cmnd/sonoff/heater3/POWER"
+    payload_on: "ON"
+    payload_off: "OFF"
+    payload_available: "Online"
+    payload_not_available: "Offline"
+    qos: 1
+    retain: false

@@ -1,0 +1,122 @@
+light.hue_ambiance_lamp_1:
+  friendly_name: Đèn phòng tắm
+  icon: mdi:lightbulb-on-outline
+light.3rd_floor:
+  friendly_name: Tất cả đèn tầng 3
+  icon: mdi:ceiling-light
+  max_mireds: 500
+light.hue_ambiance_lamp_2:
+  hidden: true
+light.hue_ambiance_lamp_3:
+  hidden: true
+light.hue_ambiance_lamp_4:
+  hidden: true
+
+switch.fan_kangaroo:
+  friendly_name: Quạt Kangaroo
+  icon: mdi:fan
+switch.balcony_light:
+  friendly_name: Đèn ban công
+  icon: mdi:track-light
+switch.bedroom_light:
+  friendly_name: Phòng ngủ tầng 3
+  icon: mdi:lightbulb-outline
+switch.toilet_2:
+  friendly_name: Toilet tầng 2
+  icon: mdi:lightbulb-outline
+switch.heater_3:
+  friendly_name: Nóng lạnh tầng 3
+  icon: mdi:hot-tub
+
+
+media_player.google_home:
+  friendly_name: Loa Google Home
+  icon: mdi:google-home
+media_player.home_mini:
+  friendly_name: Loa Google Home Mini
+  icon: mdi:google-home
+
+
+weather.yweather:
+  friendly_name: Dự báo thời tiết
+
+
+sensor._humidity:
+  friendly_name: Độ ẩm
+  icon: mdi:water-percent
+sensor._air_quality:
+  friendly_name: Chất lượng không khí
+sensor._temperature:
+  friendly_name: Nhiệt độ
+sensor._noise:
+  friendly_name: Tiếng ồn
+  icon: mdi:ear-hearing
+sensor._light: 
+  friendly_name: Ánh sáng
+sensor.cuongdoanhsang:
+  icon: mdi:lightbulb-on-outline
+sensor.tiengon:
+  icon: mdi:ear-hearing
+
+sensor.weathertoday:
+  friendly_name: Thời tiết hôm nay
+
+sensor.dark_sky_apparent_temperature:
+  friendly_name: Nhiệt độ cảm nhận
+sensor.dark_sky_humidity:
+  friendly_name: Độ ẩm
+sensor.dark_sky_icon:
+  hidden: true
+sensor.dark_sky_nearest_storm_distance:
+  friendly_name: Cơn bão gần nhất
+sensor.dark_sky_pressure:
+  friendly_name: Áp suất
+sensor.dark_sky_summary:
+  hidden: true
+sensor.dark_sky_temperature:
+  friendly_name: Nhiệt độ
+sensor.dark_sky_uv_index:
+  friendly_name: Chỉ số UV
+sensor.dark_sky_wind_speed:
+  friendly_name: Tốc độ gió
+sensor.dark_sky_daytime_high_temperature:
+  friendly_name: Nhiệt độ cao nhất ban ngày
+sensor.dark_sky_overnight_low_temperature:
+  friendly_name: Nhiệt độ thấp nhất ban đêm
+
+
+
+sensor.disk_use_percent_home:
+  friendly_name: Dung lượng sử dụng đĩa
+  unit_of_measurement: '%'
+sensor.last_boot:
+  friendly_name: Lần khởi động gần đây nhất
+sensor.memory_free:
+  friendly_name: Bộ nhớ còn trống
+sensor.memory_use_percent:
+  friendly_name: Bộ nhớ sử dụng
+sensor.processor_use:
+  friendly_name: Vi xử lý sử dụng
+sensor.network_in_wlan0:
+  friendly_name: Dung lượng mạng đã nhận
+sensor.network_out_wlan0:
+  friendly_name: Dung lượng mạng gửi đi
+ssensor.last_boot: 
+  friendly_name: Lần khởi động gần nhất
+sensor.disk_free_:
+  friendly_name: Dung lượng đĩa còn trống
+
+switch.motion_detection_amcrest_camera:
+  friendly_name: Phát hiện chuyển động
+switch.motion_recording_amcrest_camera:
+  friendly_name: Ghi lại chuyển động
+
+
+sensor.date:
+  friendly_name: Ngày
+sensor.time:
+  friendly_name: Thời gian
+
+#device_tracker.mosq_super:
+#  friendly_name: Thành Đại Ka
+script.battatden: {}

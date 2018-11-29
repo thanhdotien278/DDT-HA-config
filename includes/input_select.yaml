@@ -1,0 +1,60 @@
+
+  hvacmode:
+    name: HVAC Mode
+    options:
+      - heat
+      - cool
+  abodestatus:
+    name: Abode status
+    options:
+      - disarmed
+      - armed_home
+      - armed_away
+    initial: disarmed
+    icon: mdi:security
+  livingroomharmony:
+    name: Harmony Activity
+    options:
+      - PowerOff
+      - Watch Fire TV
+      - Youtube
+      - SATV
+      - Watch Apple TV
+    initial: PowerOff
+    icon: mdi:remote
+  hdmiswitcher:
+    name: HDMI Switcher
+    options:
+      - AppleTV
+      - FireTV
+      - Shield
+    initial: Shield
+    icon: mdi:remote
+  hdmiinput:
+    name: HDMI Input
+    options:
+      - InputHdmi1
+      - InputHdmi2
+      - InputHDMI3
+      - InputHdmi4
+    initial: InputHdmi4
+    icon: mdi:remote
+
+  temp1:
+    name: Nhiệt độ máy lạnh
+    options:
+      - 18
+      - 19
+      - 20
+      - 21
+      - 22
+      - 23
+      - 24
+      - 25
+      - 26
+      - 27
+      - 28
+      - 29
+      - 30
+    initial: 27
+    icon: mdi:air-conditioner
