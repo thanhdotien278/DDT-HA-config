@@ -117,13 +117,15 @@ amcrest:
   - host: !secret amcrest_ip
     username: !secret amcrest_user
     password: !secret amcrest_pass
-    resolution: low
     sensors:
       - motion_detector
       - sdcard
     switches:
       - motion_detection
       - motion_recording
+    resolution: low
+    scan_interval: 1
+
 
 ffmpeg:
   ffmpeg_bin: /usr/bin/ffmpeg
@@ -132,10 +134,7 @@ camera:
   - platform: ffmpeg
     input: rtsp://192.168.2.10/onvif1
     name: Yosee Camra
-  - platform: amcrest
-    input: http://admin:admin@192.168.2.30/cgi-bin/snapshot.cgi?1
-    name: Amcrest Super
-
+  
 
 sun:
 
