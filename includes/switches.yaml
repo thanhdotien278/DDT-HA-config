@@ -15,54 +15,20 @@
 
   - platform: broadlink
     host: 192.168.2.12
-    mac: '54:60:09:AD:0D:1C'
+    mac: 'B4:43:0D:CC:06:68'
     type: rm_mini
     timeout: 15
     switches:
       samsung_tv:
         friendly_name: 'Tivi Samsung'
-        command_on: 'aaaabafsf='
-        command_off: 'JgCEAynzKA8pDw0rKAKBAoDw0rKBAoDw0rDSsMKw0rDCsNKynyKQ8oEAwrKQ8oEAwrDSsMLAwrDSsMKynzKA8pDw0rKA8pDw0rDCsNKwwrDSsNKyjzKBAoDw0rKBAoDw0rDSsMKw0rDCsNKynyKQ8oEAwrKQ8oEAwrDSsNKwwrDSsMKynzKA8pDw0rKA8pDw0rDSoOKg0rDSoOKijzKBAoDw4qKBAoDw4qDSsNKg4qDSoOKijzKQ8oEA0qKQ8oEA0qDioNKw0qDioNKinzKA8pDw0rKA8pDw0rDCsNKwwrDSsNKyjzKBAoDw0rKBAoDw0rDCwMKw0rDCsNKyjzKQ8oEAwrKQ8oEAwrDSsMLAwrDSsMKynzKA8pDw0rKA8pDw0rDCsNKw0qDSsNKyjzKBAoDw0rKBAoDw0rDCwMKw0rDCsNKyjzKQ8oEAwrKQ8oEAwrDSsMKw0rDSsMKynzKA8pDwwsKA8pDw0rDCsNKwwrDSsNKyjzKBAoDw0rKBEnEAwrDSsMKw0rDCsNKynyKRAnEQsrKRAnEQsrDSsMLAwrDSsMKynzKBAoEAwrKBAoEAwrDCsNKwwsDCsNKyjzKBEnEAwrKBEnEAwrDSsMKw0rDCwMKynyKRAnEQssKBAoEAssDCwMLAssDCwLLCjzKBAoEAwsJxAoEAwsCywMLAwsCywMLCf0KBAnEQssKBAnEQssDCwLLAwsDCwLLCj0JxAoEAwsJxAoEAwsCywMLAwsCywMLCf0KBAnEAwsKBAnEAwsDCwLLAwsDCwLLCjzKBAoEAssKBAoEAstCywMLAssDCwMLCf0JxEnEAwsJxEnEAwsCywMLAwsCywMLCf0KBAnEQssKBAnEQssDCwLLAwsDCwLLCj0JxEnEQotJxEnEQotCywMLAssDCwMLCf0JxImEQssJxImEQstCi0LLQstCi0LLSb1JxEmEgotJxEmEgotCy0KLQstCy0KLSf1JhEnEQstJhEnEQstCi0LLQouCi0LLSb1JhImEQstJhImEQstCy0KLQstCi4KLib1JhImEgkuJhImEgkuCi4KLgkuCi4KLSb2JRImEgouJRMlEwkvCC8JLwkvCC8JLyT3JRMkEwkvJRMkEwkwCDAHMAgwCC8IMCT3JBUjFQYxIxUjFQcwBzIFMgYyBTMFMiL6IRkfUR8aHQANBQAAAAA='
+        command_on: 'JgDSAJOVEjgROBI4EhMSExITERQRExI4EjgSNxITEhMSExITEhMRFBE4EhMSExITEhMRFBEUETgSExI4ETgSOBI4ETgSOBIABgKUlRE4EjgSOBEUERMSExITEhMSOBE4EjgSExITERQRFBETEhMSOBITERQRFBETEhMSExI4ERQROBI4EjgROBI4EjgRAAYDlJQSOBE4EjgSExITERQRFBETEjgSOBE4EhMSExITEhMRFBEUETgSExITEhMRFBETEhMSOBITETgSOBI4ETgSOBI4EQANBQAAAAAAAA=='
+        command_off: 'JgDSAJOVEjgROBI4EhMSExITERQRExI4EjgSNxITEhMSExITEhMRFBE4EhMSExITEhMRFBEUETgSExI4ETgSOBI4ETgSOBIABgKUlRE4EjgSOBEUERMSExITEhMSOBE4EjgSExITERQRFBETEhMSOBITERQRFBETEhMSExI4ERQROBI4EjgROBI4EjgRAAYDlJQSOBE4EjgSExITERQRFBETEjgSOBE4EhMSExITEhMRFBEUETgSExITEhMRFBETEhMSOBITETgSOBI4ETgSOBI4EQANBQAAAAAAAA=='
 
-
-
-  - platform: mqtt
-    name: Bedroom light
-    state_topic: "stat/2nut_so1/POWER1"
-    command_topic: "cmnd/2nut_so1/POWER1"
-    payload_on: "ON"
-    payload_off: "OFF"
-    payload_available: "Online"
-    payload_not_available: "Offline"
-    qos: 1
-    retain: false
-
-  - platform: mqtt
-    name: Balcony Light
-    state_topic: "stat/2nut_so1/POWER2"
-    command_topic: "cmnd/2nut_so1/POWER2"
-    payload_on: "ON"
-    payload_off: "OFF"
-    payload_available: "Online"
-    payload_not_available: "Offline"
-    qos: 1
-    retain: false
-
-  - platform: mqtt
-    name: Toilet 2
-    state_topic: "stat/sonoff/t2/toilet/POWER"
-    command_topic: "cmnd/sonoff/t2/toilet/POWER"
-    payload_on: "ON"
-    payload_off: "OFF"
-    payload_available: "Online"
-    payload_not_available: "Offline"
-    qos: 1
-    retain: false
 
   - platform: mqtt
     name: Heater 3
-    state_topic: "stat/sonoff/heater3/POWER"
-    command_topic: "cmnd/sonoff/heater3/POWER"
+    state_topic: "stat/heater3/POWER"
+    command_topic: "cmnd/heater3/POWER"
     payload_on: "ON"
     payload_off: "OFF"
     payload_available: "Online"

@@ -13,17 +13,17 @@ class DarkSkyWeatherCard extends HTMLElement {
       this.appendChild(card);
     }
 
-    const getUnit = function(measure) {
-      const lengthUnit = hass.config.unit_system.length;
+    const getUnit = function (measure) {
+      const lengthUnit = hass.config.core.unit_system.length;
       switch (measure) {
         case 'air_pressure':
-          return lengthUnit === 'km' ? 'hPa' : 'mbar';
+          return lengthUnit === 'km' ? 'hPa' : 'inHg';
         case 'length':
           return lengthUnit;
         case 'precipitation':
           return lengthUnit === 'km' ? 'mm' : 'in';
         default:
-          return hass.config.unit_system[measure] || '';
+          return hass.config.core.unit_system[measure] || '';
       }
     };
 
@@ -69,19 +69,19 @@ class DarkSkyWeatherCard extends HTMLElement {
       'NNW',
       'N'
     ];
-
-    var forecastDate1 = new Date() ;
-    forecastDate1.setDate(forecastDate1.getDate());
+    
+    var forecastDate1 = new Date();
+    forecastDate1.setDate(forecastDate1.getDate()+1);
     var forecastDate2 = new Date();
-    forecastDate2.setDate(forecastDate2.getDate() + 1);
+    forecastDate2.setDate(forecastDate2.getDate()+2);
     var forecastDate3 = new Date();
-    forecastDate3.setDate(forecastDate3.getDate() + 2);
+    forecastDate3.setDate(forecastDate3.getDate()+3);
     var forecastDate4 = new Date();
-    forecastDate4.setDate(forecastDate4.getDate() + 3);
+    forecastDate4.setDate(forecastDate4.getDate()+4);
     var forecastDate5 = new Date();
-    forecastDate5.setDate(forecastDate5.getDate() + 4);
-
-
+    forecastDate5.setDate(forecastDate5.getDate()+5);
+    
+    
     const currentConditions = hass.states[this.config.entity_current_conditions].state;
     const humidity = hass.states[this.config.entity_humidity].state;
     const pressure = Math.round(hass.states[this.config.entity_pressure].state);
@@ -89,38 +89,28 @@ class DarkSkyWeatherCard extends HTMLElement {
     const visibility = hass.states[this.config.entity_visibility].state;
     const windBearing = windDirections[(Math.round((hass.states[this.config.entity_wind_bearing].state / 360) * 16))];
     const windSpeed = Math.round(hass.states[this.config.entity_wind_speed].state);
-    const forecast1 = {
-      date: forecastDate1,
-      condition: this.config.entity_forecast_icon_1,
-      temphigh: this.config.entity_forecast_high_temp_1,
-      templow: this.config.entity_forecast_low_temp_1,
-    };
-    const forecast2 = {
-      date: forecastDate2,
-      condition: this.config.entity_forecast_icon_2,
-      temphigh: this.config.entity_forecast_high_temp_2,
-      templow: this.config.entity_forecast_low_temp_2,
-    };
-    const forecast3 = {
-      date: forecastDate3,
-      condition: this.config.entity_forecast_icon_3,
-      temphigh: this.config.entity_forecast_high_temp_3,
-      templow: this.config.entity_forecast_low_temp_3,
-    };
-    const forecast4 = {
-      date: forecastDate4,
-      condition: this.config.entity_forecast_icon_4,
-      temphigh: this.config.entity_forecast_high_temp_4,
-      templow: this.config.entity_forecast_low_temp_4,
-    };
-    const forecast5 = {
-      date: forecastDate5,
-      condition: this.config.entity_forecast_icon_5,
-      temphigh: this.config.entity_forecast_high_temp_5,
-      templow: this.config.entity_forecast_low_temp_5,
-    };
+    const forecast1 = { date: forecastDate1,
+               condition: this.config.entity_forecast_icon_1,
+               temphigh: this.config.entity_forecast_high_temp_1,
+               templow:  this.config.entity_forecast_low_temp_1, };
+    const forecast2 = { date: forecastDate2,
+               condition: this.config.entity_forecast_icon_2,
+               temphigh: this.config.entity_forecast_high_temp_2,
+               templow:  this.config.entity_forecast_low_temp_2, };
+    const forecast3 = { date: forecastDate3,
+               condition: this.config.entity_forecast_icon_3,
+               temphigh: this.config.entity_forecast_high_temp_3,
+               templow:  this.config.entity_forecast_low_temp_3, };
+    const forecast4 = { date: forecastDate4,
+               condition: this.config.entity_forecast_icon_4,
+               temphigh: this.config.entity_forecast_high_temp_4,
+               templow:  this.config.entity_forecast_low_temp_4, };
+    const forecast5 = { date: forecastDate5,
+               condition: this.config.entity_forecast_icon_5,
+               temphigh: this.config.entity_forecast_high_temp_5,
+               templow:  this.config.entity_forecast_low_temp_5, };
 
-    const forecast = [forecast1, forecast2, forecast3, forecast4, forecast5];
+    const forecast = [forecast1,forecast2,forecast3,forecast4,forecast5];
 
 
     this.content.innerHTML = `
@@ -144,17 +134,18 @@ class DarkSkyWeatherCard extends HTMLElement {
                   <br><span class="highTemp">${Math.round(hass.states[daily.temphigh].state)}${getUnit('temperature')}</span>
                   <br><span class="lowTemp">${Math.round(hass.states[daily.templow].state)}${getUnit('temperature')}</span>
               </div>`).join('')}
-      </div>`;
+      </div>
+      <br><span class="unit">${hass.states[this.config.entity_daily_summary].state}</span></br>`;
   }
 
   setConfig(config) {
-    if (!config.entity_current_conditions ||
-      !config.entity_humidity ||
-      !config.entity_pressure ||
-      !config.entity_temperature ||
-      !config.entity_visibility ||
-      !config.entity_wind_bearing ||
-      !config.entity_wind_speed) {
+    if (!config.entity_current_conditions || 
+        !config.entity_humidity ||
+        !config.entity_pressure ||
+        !config.entity_temperature ||
+        !config.entity_visibility ||
+        !config.entity_wind_bearing ||
+        !config.entity_wind_speed) {
       throw new Error('Please define entities');
     }
     this.config = config;

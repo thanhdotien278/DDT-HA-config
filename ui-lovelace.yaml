@@ -13,6 +13,9 @@ resources:
     type: module
   - url: /local/mini-media-player-bundle.js?v=0.9.2 # https://community.home-assistant.io/t/lovelace-mini-media-player/68459
     type: module
+  - url: /local/Plan-coordinates.js
+    type: js
+    
 
 
 
@@ -27,17 +30,27 @@ views:
     icon: mdi:home-assistant
     cards:
       - type: entity-filter
-        entities:          
-          - entity: switch.balcony_light
-            tap_action: toggle    
-          - entity: switch.bedroom_light
+        entities:    
+          - entity: light.dining_room_main_light
+            tap_action: toggle
+          - entity: light.dining_room_ceiling_light
+            tap_action: toggle
+          - entity: light.ceiling_fan
             tap_action: toggle      
-          - entity: switch.toilet_2
+          - entity: light.balcony_light
+            tap_action: toggle    
+          - entity: light.bedroom_light
+            tap_action: toggle      
+          - entity: light.toilet_2
             tap_action: toggle
           - entity: switch.fan_kangaroo
             tap_action: toggle
           - entity: switch.heater_3
             tap_action: toggle
+
+
+            
+            
             
 
 
@@ -59,16 +72,23 @@ views:
         #show_state: false
         #column_width: calc(100% / 3)
         entities:
-          - entity: switch.bedroom_light
+          - entity: light.dining_room_main_light
+            tap_action: toggle
+          - entity: light.dining_room_ceiling_light
+            tap_action: toggle
+          - entity: light.ceiling_fan
+            tap_action: toggle      
+          - entity: light.balcony_light
+            tap_action: toggle    
+          - entity: light.bedroom_light
+            tap_action: toggle      
+          - entity: light.toilet_2
             tap_action: toggle
           - entity: switch.fan_kangaroo
-            name: Siêu quạt
-            tap_action: toggle
-          - entity: switch.balcony_light
             tap_action: toggle
           - entity: switch.heater_3
             tap_action: toggle
-          - entity: switch.toilet_2
+          - entity: switch.samsung_tv
             tap_action: toggle
           - entity: input_select.temp1
           
@@ -82,6 +102,7 @@ views:
             icon: mdi:link
             url: https://www.facebook.com/thanhdotien278  
 
+      
       - type: entities
         title: Tự động hoá
         show_header_toggle: false
@@ -132,8 +153,8 @@ views:
           - entity: sensor.dark_sky_pressure
           - entity: sensor.dark_sky_humidity
           - entity:  sensor.dark_sky_wind_speed
-          - entity: sensor.dark_sky_daytime_high_temperature          
-          - entity: sensor.dark_sky_overnight_low_temperature
+          - entity: sensor.dark_sky_daytime_high_temperature_1          
+          - entity: sensor.dark_sky_overnight_low_temperature_1
 
 #################################################################
 #                                                               #
@@ -196,36 +217,6 @@ views:
         entity_weather: weather.yweather
         entity_sun: sun.sun
 
-      - type: custom:dark-sky-weather-card
-        entity_sun: sun.sun
-        entity_daily_summary: sensor.dark_sky_daily_summary
-        entity_current_conditions: sensor.dark_sky_icon
-        entity_humidity: sensor.dark_sky_humidity #sensor.dark_sky_humidity
-        entity_pressure: sensor.dark_sky_pressure
-        entity_temperature: sensor.dark_sky_temperature #sensor.dark_sky_temperature
-        entity_visibility: sensor.dark_sky_visibility
-        entity_wind_bearing: sensor.dark_sky_wind_bearing
-        entity_wind_speed: sensor.dark_sky_wind_speed
-        entity_forecast_high_temp_1: sensor.dark_sky_daytime_high_temperature_1
-        entity_forecast_high_temp_2: sensor.dark_sky_daytime_high_temperature_2
-        entity_forecast_high_temp_3: sensor.dark_sky_daytime_high_temperature_3
-        entity_forecast_high_temp_4: sensor.dark_sky_daytime_high_temperature_4
-        entity_forecast_high_temp_5: sensor.dark_sky_daytime_high_temperature_5
-        entity_forecast_low_temp_1: sensor.dark_sky_overnight_low_temperature
-        entity_forecast_low_temp_2: sensor.dark_sky_overnight_low_temperature_1
-        entity_forecast_low_temp_3: sensor.dark_sky_overnight_low_temperature_2
-        entity_forecast_low_temp_4: sensor.dark_sky_overnight_low_temperature_3
-        entity_forecast_low_temp_5: sensor.dark_sky_overnight_low_temperature_4
-        entity_forecast_icon_1: sensor.dark_sky_icon_1
-        entity_forecast_icon_2: sensor.dark_sky_icon_2
-        entity_forecast_icon_3: sensor.dark_sky_icon_3
-        entity_forecast_icon_4: sensor.dark_sky_icon_4
-        entity_forecast_icon_5: sensor.dark_sky_icon_5
-
-
-      - type: weather-forecast
-        entity: weather.yweather
-        title: Dự báo thời tiết
         # The filter card will filter entities for their state
       - type: history-graph
         title: Nhiệt độ 24h qua
@@ -241,7 +232,7 @@ views:
             name: Ngoài trời    
           - entity: sensor._humidity
             name: Trong phòng
-  #################################################################
+#################################################################
 #                                                               #
 #                        TAB SYSTEM                             #
 #                                                               #
@@ -280,8 +271,6 @@ views:
           - entity: sensor.since_last_boot
           - entity: sensor.speedtest_download
           #- entity: device_tracker.thanhdaika_thanhdaika
-          - entity: sensor.battery_myphone
-          - entity: sensor.battery_tablet
           - entity: sensor.mattroi
 
           
@@ -290,7 +279,7 @@ views:
     icon: mdi:accusoft
     cards:
       - type: picture-entity
-        entity: switch.bedroom_light
+        entity: light.bedroom_light
         tap_action: toggle
         state_image:
           "on": /local/light_on.jpg
@@ -301,30 +290,42 @@ views:
           - entity: script.battatden
             name: Bật tắt đèn 
             tap_action: toggle
+      - type: picture-elements
+        image: /local/light_on.jpg
+        elements:
+          - type: state-icon
+            tap_action: toggle
+            entity: light.dining_room_ceiling_light
+            style:
+              top: 47%
+              left: 42%
+      
       - type: picture-glance
         entities:
-          - switch.bedroom_light
-          - switch.balcony_light
+          - light.dining_room_ceiling_light
+          - light.balcony_light
           - switch.fan_kangaroo
         state_image:
           "on": /local/light_on.jpg
           "off": /local/light_off.jpg
-        entity: switch.balcony_light
+        entity: light.balcony_light
       - type: glance
         title: Phòng ngủ của nhà Mỳ Tôm
         show_name: True
         show_state: false
         column_width: calc(100% / 3)
         entities:
-          - entity: switch.bedroom_light
+          - entity: light.bedroom_light
             name: Đèn phòng ngủ
             tap_action: toggle
           - entity: switch.fan_kangaroo
             name: Siêu quạt
             tap_action: toggle
-          - entity: switch.balcony_light
+          - entity: light.balcony_light
             # Override the name to use
             name: Đèn ban công
+            tap_action: toggle
+          - entity: script.battatden
             tap_action: toggle
 
 #################################################################
@@ -344,6 +345,7 @@ views:
         entity: camera.yosee_camra
       - type: picture-entity
         entity: camera.amcrest_camera
+
       
       - type: entities
         title: Media Players
@@ -367,7 +369,140 @@ views:
 
       
 
-        
+
+  - title: Header
+    icon: mdi:car
+    panel: true
+    cards:
+      - type: vertical-stack
+        cards:
+          - type: conditional
+            conditions:
+              - entity: switch.fan_kangaroo
+                state: "off"
+            card:
+              type: picture-elements
+              image: /local/remotel.png
+              elements:
+                - type: icon
+                  tap_action: toggle
+                  entity: switch.fan_kangaroo
+                  icon: mdi:power
+                  style:
+                    top: 7.5%
+                    left: 11%
+                    --iron-icon-height: 30px
+                    --iron-icon-width: 30px
+                - type: icon
+                  tap_action: toggle
+                  entity: switch.mute
+                  icon: mdi:volume-mute
+                  style:
+                    top: 7.74%
+                    left: 28.5%
+                    color: '#a31a40'
+                    --iron-icon-height: 30px
+                    --iron-icon-width: 30px
+                - type: icon
+                  tap_action: toggle
+                  entity: switch.input
+                  icon: mdi:video-input-hdmi
+                  style:
+                    top: 7.6%
+                    left: 45.4%
+                    color: '#a31a40'
+                    --iron-icon-height: 30px
+                    --iron-icon-width: 30px
+                - type: icon
+                  tap_action: toggle
+                  entity: switch.setting
+                  icon: mdi:settings
+                  style:
+                    top: 7.5%
+                    left: 62.4%
+                    color: '#a31a40'
+                    --iron-icon-height: 30px
+                    --iron-icon-width: 30px
+                - type: icon
+                  tap_action: toggle
+                  entity: switch.volume_up
+                  icon: mdi:plus
+                  style:
+                    top: 18.7%
+                    left: 11%
+                    color: '#a31a40'
+                    --iron-icon-height: 30px
+                    --iron-icon-width: 30px
+                - type: icon
+                  tap_action: toggle
+                  entity: switch.volume_down
+                  icon: mdi:minus
+                  style:
+                    top: 38.6%
+                    left: 11%
+                    color: '#a31a40'
+                    --iron-icon-height: 30px
+                    --iron-icon-width: 30px
+                - type: icon
+                  tap_action: toggle
+                  entity: switch.back
+                  icon: mdi:arrow-left-drop-circle
+                  style:
+                    top: 69.6%
+                    left: 11.6%
+                    color: '#a31a40'
+                    --iron-icon-height: 30px
+                    --iron-icon-width: 30px
+                - type: icon
+                  tap_action: toggle
+                  entity: switch.up
+                  icon: mdi:circle
+                  style:
+                    top: 54%
+                    left: 50.3%
+                    color: '#a31a40'
+                    --iron-icon-height: 30px
+                    --iron-icon-width: 30px
+                - type: icon
+                  tap_action: toggle
+                  entity: switch.left
+                  icon: mdi:circle
+                  style:
+                    top: 69.5%
+                    left: 28.8%
+                    color: '#a31a40'
+                    --iron-icon-height: 30px
+                    --iron-icon-width: 30px
+                - type: icon
+                  tap_action: toggle
+                  entity: switch.right
+                  icon: mdi:circle
+                  style:
+                    top: 69.1%
+                    left: 72%
+                    color: '#a31a40'
+                    --iron-icon-height: 30px
+                    --iron-icon-width: 30px
+                - type: icon
+                  tap_action: toggle
+                  entity: switch.down
+                  icon: mdi:circle
+                  style:
+                    top: 85.1%
+                    left: 50.25%
+                    --iron-icon-height: 30px
+                    --iron-icon-width: 30px
+                    color: '#a31a40'
+                - type: icon
+                  tap_action: toggle
+                  entity: switch.ok
+                  icon: mdi:circle-slice-8
+                  style:
+                    top: 69.1%
+                    left: 50.25%
+                    color: '#a31a40'
+                    --iron-icon-height: 50px
+                    --iron-icon-width: 50px
 
 
         

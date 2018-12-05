@@ -1,3 +1,22 @@
+- alias: "Power state of Dining room light on HA start-up"
+  trigger:
+    platform: homeassistant
+    event: start
+  action:
+    - service: mqtt.publish
+      data:
+        topic: "cmnd/dining/power1"
+        payload: ""
+    - service: mqtt.publish
+      data:
+        topic: "cmnd/dining/power2"
+        payload: ""
+    - service: mqtt.publish
+      data:
+        topic: "cmnd/dining/power3"
+        payload: ""
+
+
 - alias: "Power state of Bedroom light on HA start-up"
   trigger:
     platform: homeassistant
@@ -5,11 +24,11 @@
   action:
     - service: mqtt.publish
       data:
-        topic: "cmnd/2nut_so1/power1"
+        topic: "cmnd/bedroom3/power1"
         payload: ""
     - service: mqtt.publish
       data:
-        topic: "cmnd/2nut_so1/power2"
+        topic: "cmnd/bedroom3/power2"
         payload: ""
 
 - alias: "Power state of Toilet light 2 on HA start-up"
@@ -19,7 +38,7 @@
   action:
     - service: mqtt.publish
       data:
-        topic: "cmnd/sonoff/t2/toilet/power"
+        topic: "cmnd/toilet2/power"
         payload: ""
 
 - alias: "Power state of Heater 3 on HA start-up"
@@ -29,5 +48,5 @@
   action:
     - service: mqtt.publish
       data:
-        topic: "cmnd/sonoff/heater3/toilet/power"
+        topic: "cmnd/heater3/power"
         payload: ""

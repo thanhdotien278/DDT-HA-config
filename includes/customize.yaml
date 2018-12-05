@@ -15,18 +15,31 @@ light.hue_ambiance_lamp_4:
 switch.fan_kangaroo:
   friendly_name: Quạt Kangaroo
   icon: mdi:fan
-switch.balcony_light:
-  friendly_name: Đèn ban công
-  icon: mdi:track-light
-switch.bedroom_light:
-  friendly_name: Phòng ngủ tầng 3
-  icon: mdi:lightbulb-outline
-switch.toilet_2:
-  friendly_name: Toilet tầng 2
-  icon: mdi:lightbulb-outline
 switch.heater_3:
   friendly_name: Nóng lạnh tầng 3
   icon: mdi:hot-tub
+
+
+light.dining_room_main_light:
+  friendly_name: Đèn chính phòng ăn
+  icon: mdi:lightbulb-on
+light.dining_room_ceiling_light:
+  friendly_name: Đèn trần phòng ăn
+  icon: mdi:ceiling-light
+light.ceiling_fan:
+  friendly_name: Quạt trần
+  icon: mdi:fan
+light.balcony_light:
+  friendly_name: Đèn ban công
+  icon: mdi:track-light
+light.bedroom_light:
+  friendly_name: Phòng ngủ tầng 3
+  icon: mdi:lightbulb-on
+light.toilet_2:
+  friendly_name: Toilet tầng 2
+  icon: mdi:lightbulb-on
+
+
 
 
 media_player.google_home:

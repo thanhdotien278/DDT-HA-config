@@ -3,3 +3,7 @@ media_player.google_home:
 media_player.home_mini: {}
 media_player.chromecast3089:
   icon: mdi:cast
+light.dining_room_ceiling_light:
+  friendly_name: Đèn trần phòng ăn
+light.dining_room_main_light:
+  friendly_name: Đèn chính phòng ăn

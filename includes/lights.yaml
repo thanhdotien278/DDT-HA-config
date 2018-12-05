@@ -1,0 +1,73 @@
+#################################################################
+## Switches
+#################################################################
+
+ 
+  - platform: mqtt
+    name: Dining room Main light
+    state_topic: "stat/dining/POWER1"
+    command_topic: "cmnd/dining/POWER1"
+    payload_on: "ON"
+    payload_off: "OFF"
+    payload_available: "Online"
+    payload_not_available: "Offline"
+    qos: 1
+    retain: false
+
+  - platform: mqtt
+    name: Dining room Ceiling light
+    state_topic: "stat/dining/POWER2"
+    command_topic: "cmnd/dining/POWER2"
+    payload_on: "ON"
+    payload_off: "OFF"
+    payload_available: "Online"
+    payload_not_available: "Offline"
+    qos: 1
+    retain: false
+
+  - platform: mqtt
+    name: Ceiling fan
+    state_topic: "stat/dining/POWER3"
+    command_topic: "cmnd/dining/POWER3"
+    payload_on: "ON"
+    payload_off: "OFF"
+    payload_available: "Online"
+    payload_not_available: "Offline"
+    qos: 1
+    retain: false
+
+
+
+  - platform: mqtt
+    name: Bedroom light
+    state_topic: "stat/bedroom3/POWER1"
+    command_topic: "cmnd/bedroom3/POWER1"
+    payload_on: "ON"
+    payload_off: "OFF"
+    payload_available: "Online"
+    payload_not_available: "Offline"
+    qos: 1
+    retain: false
+
+  - platform: mqtt
+    name: Balcony Light
+    state_topic: "stat/bedroom3/POWER2"
+    command_topic: "cmnd/bedroom3/POWER2"
+    payload_on: "ON"
+    payload_off: "OFF"
+    payload_available: "Online"
+    payload_not_available: "Offline"
+    qos: 1
+    retain: false
+
+  - platform: mqtt
+    name: Toilet 2
+    state_topic: "stat/toilet2/POWER"
+    command_topic: "cmnd/toilet2/POWER"
+    payload_on: "ON"
+    payload_off: "OFF"
+    payload_available: "Online"
+    payload_not_available: "Offline"
+    qos: 1
+    retain: false
+

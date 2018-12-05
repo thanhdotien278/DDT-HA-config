@@ -104,11 +104,7 @@ mqtt:
 
 
 device_tracker:
-  - platform: owntracks
-    max_gps_accuracy: 200
-    waypoints: true
-    mqtt_topic: "owntracks/mosq/MIMI"
-    events_only: true
+ 
 
 map:
 
@@ -160,6 +156,7 @@ ring:
 #                                                  #
 ####################################################
 switch: !include includes/switches.yaml
+light: !include includes/lights.yaml
 cloud:
 group: !include includes/groups.yaml
 automation: !include includes/automations.yaml

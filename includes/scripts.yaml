@@ -1,15 +1,17 @@
 battatden:
   sequence:
-    - service: switch.turn_on
-      entity_id: switch.balcony_light
+    - service: light.turn_on
+      entity_id: light.balcony_light
     - delay: '00:00:05'
-    - service: switch.turn_off
-      entity_id: switch.balcony_light
+    - service: light.turn_off
+      entity_id: light.balcony_light
     - service: tts.google_say
       entity_id: media_player.home_mini
       data:
         message: 'Xin chào đại ca Thành, đã bật tắt đèn thành công'
         language: 'vi'
+
+        
 batnonglanh3:
   sequence:
     - service: switch.turn_on
