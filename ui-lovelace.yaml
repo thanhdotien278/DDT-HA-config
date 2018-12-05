@@ -275,58 +275,7 @@ views:
 
           
 
-  - title: Thu nghiem
-    icon: mdi:accusoft
-    cards:
-      - type: picture-entity
-        entity: light.bedroom_light
-        tap_action: toggle
-        state_image:
-          "on": /local/light_on.jpg
-          "off": /local/light_off.jpg
-      - type: glance
-        title: Scripts
-        entities:
-          - entity: script.battatden
-            name: Bật tắt đèn 
-            tap_action: toggle
-      - type: picture-elements
-        image: /local/light_on.jpg
-        elements:
-          - type: state-icon
-            tap_action: toggle
-            entity: light.dining_room_ceiling_light
-            style:
-              top: 47%
-              left: 42%
-      
-      - type: picture-glance
-        entities:
-          - light.dining_room_ceiling_light
-          - light.balcony_light
-          - switch.fan_kangaroo
-        state_image:
-          "on": /local/light_on.jpg
-          "off": /local/light_off.jpg
-        entity: light.balcony_light
-      - type: glance
-        title: Phòng ngủ của nhà Mỳ Tôm
-        show_name: True
-        show_state: false
-        column_width: calc(100% / 3)
-        entities:
-          - entity: light.bedroom_light
-            name: Đèn phòng ngủ
-            tap_action: toggle
-          - entity: switch.fan_kangaroo
-            name: Siêu quạt
-            tap_action: toggle
-          - entity: light.balcony_light
-            # Override the name to use
-            name: Đèn ban công
-            tap_action: toggle
-          - entity: script.battatden
-            tap_action: toggle
+  
 
 #################################################################
 #                                                               #
