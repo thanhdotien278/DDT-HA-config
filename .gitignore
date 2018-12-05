@@ -39,6 +39,7 @@ google_calendars.yaml
 components
 deps
 tts
+.ssh
 www/icons
 www/floorplans
 downloads
